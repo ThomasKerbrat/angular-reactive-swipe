@@ -1,0 +1,71 @@
+reactive-swipe {
+    display: block;
+    overflow: hidden;
+
+    position: relative;
+
+    height: 50px;
+    width: 250px;
+    border: 1px solid black;
+}
+
+reactive-swipe reactive-swipe-content {
+    display: inline-block;
+    box-sizing: border-box;
+
+    position: absolute;
+    top: 0px;
+    /*left: -50px;*/
+
+    height: inherit;
+    width: inherit;
+    border: 1px solid pink;
+
+    background-color: white;
+    box-shadow: 0px 0px 15px gray;
+    z-index: 1;
+}
+
+reactive-swipe-content.out {
+    transition-property: left, right;
+    transition-duration: 700ms;
+    transition-timing-function: ease-out;
+}
+
+reactive-swipe reactive-swipe-left-actions {
+    display: none;
+    box-sizing: border-box;
+
+    position: absolute;
+    top: 0px;
+    left: 0px;
+
+    height: inherit;
+    width: 60px;
+
+    background-color: blue;
+    z-index: 0;
+}
+
+reactive-swipe reactive-swipe-right-actions {
+    display: none;
+    box-sizing: border-box;
+
+    position: absolute;
+    top: 0px;
+    right: 0px;
+
+    height: inherit;
+    width: 120px;
+
+    background-color: red;
+    z-index: 0;
+}
+
+reactive-swipe-left-actions.active {
+    display: inline-block;
+}
+
+reactive-swipe-right-actions.active {
+    display: inline-block;
+}

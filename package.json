@@ -1,0 +1,24 @@
+{
+  "name": "angular-reactive-swipe",
+  "version": "0.0.0",
+  "description": "AngularJS 1.5 directive for native swipe user experience.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "ws --spa \"tests/index.html\" --log-format"
+  },
+  "keywords": [
+    "angular",
+    "angularjs",
+    "1.5",
+    "swipe",
+    "reactive",
+    "native"
+  ],
+  "author": "Thomas Kerbrat <kerbrat(at)outlook(dot)com> (at)",
+  "license": "ISC",
+  "devDependencies": {
+    "angular": "^1.5.7",
+    "local-web-server": "^1.2.6"
+  }
+}
