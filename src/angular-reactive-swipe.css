@@ -3,9 +3,10 @@ reactive-swipe {
     overflow: hidden;
 
     position: relative;
+    margin: auto;
 
-    height: 50px;
-    width: 250px;
+    height: 10em;
+    width: 80%;
     border: 1px solid black;
 }
 
@@ -26,11 +27,11 @@ reactive-swipe reactive-swipe-content {
     z-index: 1;
 }
 
-reactive-swipe-content.out {
+/*reactive-swipe-content.out {
     transition-property: left, right;
-    transition-duration: 700ms;
+    transition-duration: 300ms;
     transition-timing-function: ease-out;
-}
+}*/
 
 reactive-swipe reactive-swipe-left-actions {
     display: none;

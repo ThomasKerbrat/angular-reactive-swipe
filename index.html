@@ -1,28 +1,41 @@
-<!DOCTYPE html>
-<html>
+<html lang="en">
 
     <head>
-        <!-- Angular JS 1.5 -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.js"></script>
-
-        <!-- Angular Reactive Swipe -->
-        <script src="src/angular-reactive-swipe.js"></script>
-        <link rel="stylesheet" href="src/angular-reactive-swipe.css">
-
-        <!-- Testing app -->
-        <script type="text/javascript">
-            angular.module('app', ['angular-reactive-swipe']);
-        </script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Angular Material style sheet -->
+        <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
     </head>
 
-    <body ng-app="app">
-        <reactive-swipe>
-            <reactive-swipe-left-actions>
-            </reactive-swipe-left-actions>
-            <reactive-swipe-content></reactive-swipe-content>
-            <reactive-swipe-right-actions>
-            </reactive-swipe-right-actions>
-        </reactive-swipe>
+    <body ng-app="BlankApp" ng-cloak>
+        <md-list>
+            <ms-list-item>
+                <div class="md-list-item-text">
+                    <h3>Lorem</h3>
+                    <h4>Lorem ipsum</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam maxime, tempore aperiam consectetur, deserunt commodi beatae id illo vero deleniti dolorem facere, hic cupiditate mollitia iste quis recusandae architecto quia.</p>
+                </div>
+            </ms-list-item>
+        </md-list>
+
+        <!-- Angular Material requires Angular.js Libraries -->
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+
+        <!-- Angular Material Library -->
+        <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+
+        <!-- Your application bootstrap  -->
+        <script type="text/javascript">    
+            angular.module('BlankApp', ['ngMaterial']);
+        </script>
+
     </body>
 
 </html>
+
+<!--
+Copyright 2016 Google Inc. All Rights Reserved. 
+Use of this source code is governed by an MIT-style license that can be in foundin the LICENSE file at http://material.angularjs.org/license.
+-->

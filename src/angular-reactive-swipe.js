@@ -12,9 +12,8 @@
                     // locallName: '<oneWayBinding'
                     // locallName: '&functionExpression'
                 },
-                controller: function controller($scope, $element, $attrs, $transclude) {
-                    var container = $element[0];
-                    var $container = angular.element(container);
+                controller: function reactiveSwipeController($scope, $element, $attrs, $transclude) {
+                    var $container = angular.element($element[0]);
 
                     var content = $container.find('reactive-swipe-content');
                     var $content;
@@ -34,18 +33,31 @@
                     var swipe = { left: false, right: false };
                     var initialPosition;
                     var offset;
-                    var transitionTimeout;
 
+                    content.addEventListener('touchstart', onStart, { capture: false, passive: true });
+                    content.addEventListener('mousedown', onStart, { capture: false, passive: true });
+                    content.addEventListener('touchmove', onMove, { capture: false, passive: true });
+                    content.addEventListener('mousemove', onMove, { capture: false, passive: true });
+                    content.addEventListener('touchcancel', onEnd, { capture: false, passive: true });
+                    content.addEventListener('touchend', onEnd, { capture: false, passive: true });
+                    content.addEventListener('mouseup', onEnd, { capture: false, passive: true });
 
+                    this.$onDestroy = function $onDestroy() {
+                        content.removeEventListener('touchstart', onStart);
+                        content.removeEventListener('mousestart', onStart);
+                        content.removeEventListener('touchmove', onMove);
+                        content.removeEventListener('mousemove', onMove);
+                        content.removeEventListener('touchcancel', onEnd);
+                        content.removeEventListener('touchend', onEnd);
+                        content.removeEventListener('mouseend', onEnd);
+                    }
 
-                    function onTouchstart(event) {
-                        if (transitionTimeout !== undefined) { return; }
+                    function onStart(event) {
+                        console.log(event);
                         initialPosition = event.touches[0].clientX;
                     }
 
-                    function onTouchmove(event) {
-                        if (transitionTimeout !== undefined) { return; }
-
+                    function onMove(event) {
                         offset = event.touches[0].clientX - initialPosition;
 
                         // Swipe left
@@ -75,32 +87,14 @@
                         $content.style.left = offset + "px";
                     }
 
-                    function onTouchend(event) {
-                        if (transitionTimeout !== undefined) { return; }
-
-                        transitionTimeout = window.setTimeout(function () {
-                            transitionTimeout = undefined;
-                            $left.classList.remove('active');
-                            $right.classList.remove('active');
-                            $content.classList.remove('out');
-                        }, 1000);
+                    function onEnd(event) {
+                        $left.classList.remove('active');
+                        $right.classList.remove('active');
+                        $content.classList.remove('out');
+                        offset = 0;
 
                         $content.classList.add('out');
                         $content.style.left = "0px";
-                    }
-
-
-
-                    content.addEventListener('touchstart', onTouchstart, { capture: false, passive: true });
-                    content.addEventListener('touchmove', onTouchmove, { capture: false, passive: true });
-                    content.addEventListener('touchcancel', onTouchend, { capture: false, passive: true });
-                    content.addEventListener('touchend', onTouchend, { capture: false, passive: true });
-
-                    this.$onDestroy = function $onDestroy() {
-                        content.removeEventListener('touchstart', onTouchstart);
-                        content.removeEventListener('touchmove', onTouchmove);
-                        content.removeEventListener('touchcancel', onTouchend);
-                        content.removeEventListener('touchend', onTouchend);
                     }
                 }
             };
